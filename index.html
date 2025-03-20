@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="https://unpkg.com/aframe-gestures@1.0.0/dist/aframe-gestures.min.js"></script>
-    <script>
-      AFRAME.registerComponent('zoom-controls', {
-        init: function () {
-          this.el.addEventListener('pinchstarted', () => {
-            this.initialZoom = this.el.camera.el.getAttribute('camera').zoom;
-          });
-          this.el.addEventListener('pinchmoved', (evt) => {
-            const camera = this.el.camera.el;
-            const zoomFactor = evt.detail.spreadChange;
-            camera.setAttribute('camera', 'zoom', this.initialZoom * zoomFactor);
-          });
-        }
-      });
-    </script>
-  </head>
-  <body>
-    <a-scene embedded arjs="sourceType: webcam;" gestures="maxPinchDistance: 0.5">
-      <!-- Example menu item (replace with your image URL) -->
-      <a-image
-        src="https://i.ibb.co/your-image.jpg"
-        position="-2 0 -2"
-        width="4"
-        height="6"
-      ></a-image>
-      <!-- Camera component -->
-      <a-entity camera look-controls zoom-controls position="0 0 0"></a-entity>
-    </a-scene>
-  </body>
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <style>
+    .menu-item {
+      width: 2;
+      height: 3;
+    }
+  </style>
+</head>
+<body>
+  <a-scene embedded arjs="sourceType: webcam;">
+    <!-- Menu 1 -->
+    <a-image
+      class="menu-item"
+      src="https://drive.google.com/uc?export=view&id=1lEV9_2cLHIL4sv4vMaiLP9WHimNJlk0x"
+      position="-2 0 -2"
+    ></a-image>
+    <!-- Menu 2 -->
+    <a-image
+      class="menu-item"
+      src="https://drive.google.com/uc?export=view&id=145xw8km3rqOyI1oAPKsSgW3e6zN7LmOp"
+      position="0 0 -2"
+    ></a-image>
+    <!-- Menu 3 -->
+    <a-image
+      class="menu-item"
+      src="https://drive.google.com/uc?export=view&id=14bRkGrR-qM6EswUce3SlPeDBdfgmHWsb"
+      position="2 0 -2"
+    ></a-image>
+  </a-scene>
+</body>
 </html>
